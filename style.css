@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgb(221, 220, 220);
+}
+
+#gameArea {
+    position: relative;
+    overflow: hidden;
+    margin: 50px auto;
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    box-shadow: 0 0 10px black;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#player {
+    width: 50px;
+    height: 100px;
+    background-color: black;
+    position: absolute;
+    top: 225px;
+    left: 225px;
+    border-radius: 10px;
+}
+
+#point {
+    width: 20px;
+    height: 40px;
+    background-color: red;
+    position: absolute;
+    border-radius: 10px;
+}
+
+#score {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+}
