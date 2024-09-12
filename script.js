@@ -1,5 +1,6 @@
 let player = document.getElementById('player'); // variabel for player
 let point = document.getElementById('point'); // variabel for point eller obsticle
+let bombe = document.getElementById('bombe');
 let scoreDisplay = document.getElementById('score'); // variabel for score (points samles her)
 let youWon = document.getElementById('winn'); // variabel for vinn-beskjed
 let resetGame = document.getElementById('resetGame')
@@ -59,5 +60,13 @@ function movePoint() {     // point (obsticle) blir plassert random i feltet ett
     point.style.top = y + 'px';
 }
 
+function moveBombe() {     // bombe (hinder) blir plassert random i feltet etter kollisjon
+    let x = Math.floor(Math.random() * 480);
+    let y = Math.floor(Math.random() * 480);
+    bombe.style.left = x + 'px';
+    bombe.style.top = y + 'px';
+}
+
 document.addEventListener('keydown', movePlayer); // funskjonen som tillater flytting av "player" med piltaster
 movePoint();
+moveBombe();
