@@ -107,8 +107,6 @@ body {
 }
 
 #restartGame {
-    display: flex;
     position: relative;
-    margin-left: 43%;
-    margin-top: 3%;
+    margin: 20px auto;
 }

@@ -29,6 +29,7 @@ function movePlayer(event) {    // funskjon for "player", lager funskjon som kan
     player.style.top = y + 'px';
     
     checkCollision();            // sjekker collision for "player"
+    checkBombe();
 }
 
 function checkCollision() {                           // collision detector
@@ -50,6 +51,26 @@ function checkCollision() {                           // collision detector
 
     if (score == 2) {
         document.getElementById('restartGame').style.display = 'block';
+    }
+}
+
+if (score !== 2) {
+    document.getElementById('restartGame').style.display = 'none';
+}
+
+function checkBombe() {                           // collision detector
+    let playerRect = player.getBoundingClientRect();
+    let bombeRect = bombe.getBoundingClientRect();
+
+    if (playerRect.left < bombeRect.right &&
+        playerRect.right > bombeRect.left &&
+        playerRect.top < bombeRect.bottom &&
+        playerRect.bottom > bombeRect.top) {
+        score = 0;
+        scoreDisplay.textContent = 'Score: ' + score;
+        document.getElementById('youWin').innerHTML = 'You lose!';
+        document.getElementById('restartGame').style.display = 'block';
+        moveBombe();           // sjekker move bombe (hinder)
     }
 }
   
