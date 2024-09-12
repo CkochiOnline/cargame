@@ -41,16 +41,14 @@ function checkCollision() {                           // collision detector
         playerRect.top < pointRect.bottom &&
         playerRect.bottom > pointRect.top) {
         score++;
-        scoreDisplay.textContent = 'Score: ' + score;
+        scoreDisplay.textContent = 'Score: ' + score + '/2';
         movePoint();           // sjekker move point (obsticle)
     }
 
     if (score == 2) {
-        document.getElementById('youWin').innerHTML = 'You win!'; 
-    }
-
-    if (score == 2) {
+        document.getElementById('youWin').innerHTML = 'You win!';
         document.getElementById('restartGame').style.display = 'block';
+        document.removeEventListener('keydown', movePlayer);
     }
 }
 
@@ -67,7 +65,7 @@ function checkBombe() {                           // collision detector
         playerRect.top < bombeRect.bottom &&
         playerRect.bottom > bombeRect.top) {
         score = 0;
-        scoreDisplay.textContent = 'Score: ' + score;
+        scoreDisplay.textContent = 'Score: ' + score + '/2';
         document.removeEventListener('keydown', movePlayer);
         document.getElementById('youWin').innerHTML = 'You lose!';
         document.getElementById('restartGame').style.display = 'block';
@@ -94,7 +92,7 @@ function restartGame() {
     document.getElementById('youWin').innerHTML = '';
     document.getElementById('restartGame').style.display = 'none';
     score = 0;
-    scoreDisplay.textContent = 'Score: ' + score;
+    scoreDisplay.textContent = 'Score: ' + score + '/2';
     moveBombe();
     movePoint();
 }
