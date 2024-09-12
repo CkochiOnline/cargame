@@ -1,6 +1,8 @@
 let player = document.getElementById('player'); // variabel for player
 let point = document.getElementById('point'); // variabel for point eller obsticle
 let scoreDisplay = document.getElementById('score'); // variabel for score (points samles her)
+let youWon = document.getElementById('winn'); // variabel for vinn-beskjed
+let resetGame = document.getElementById('resetGame')
 let score = 0;        // score starter på null
 
 function movePlayer(event) {    // funskjon for "player", lager funskjon som kan styre "player"
@@ -40,8 +42,16 @@ function checkCollision() {                           // collision detector
         scoreDisplay.textContent = 'Score: ' + score;
         movePoint();           // sjekker move point (obsticle)
     }
-}
 
+    if (score == 2) {
+        document.getElementById('youWin').innerHTML = 'You win!'; 
+    }
+
+    if (score == 2) {
+        document.getElementById('restartGame').style.display = 'block';
+    }
+}
+  
 function movePoint() {     // point (obsticle) blir plassert random i feltet etter kollisjon
     let x = Math.floor(Math.random() * 480);
     let y = Math.floor(Math.random() * 480);
