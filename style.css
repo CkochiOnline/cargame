@@ -39,4 +39,16 @@ body {
     text-align: center;
     margin-top: 20px;
     font-size: 30px;
+    -webkit-text-fill-color: red;
+}
+
+#youWin {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+    -webkit-text-fill-color: red;
+}
+
+#restartGame {
+    display: none;
 }
