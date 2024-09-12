@@ -69,10 +69,13 @@ body {
 
 #point {
     width: 20px;
-    height: 40px;
-    background-color: red;
+    height: 20px;
     position: absolute;
     border-radius: 10px;
+}
+
+#scorePoeng {
+    width: 100%;
 }
 
 #bombe {
@@ -96,14 +99,14 @@ body {
     text-align: center;
     margin-top: 20px;
     font-size: 30px;
-    -webkit-text-fill-color: red;
+    -webkit-text-fill-color: #299100;
 }
 
 #youWin {
     text-align: center;
     margin-top: 20px;
     font-size: 30px;
-    -webkit-text-fill-color: red;
+    -webkit-text-fill-color: #299100;
 }
 
 #restartGame {

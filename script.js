@@ -68,6 +68,7 @@ function checkBombe() {                           // collision detector
         playerRect.bottom > bombeRect.top) {
         score = 0;
         scoreDisplay.textContent = 'Score: ' + score;
+        document.removeEventListener('keydown', movePlayer);
         document.getElementById('youWin').innerHTML = 'You lose!';
         document.getElementById('restartGame').style.display = 'block';
         moveBombe();           // sjekker move bombe (hinder)
@@ -86,6 +87,16 @@ function moveBombe() {     // bombe (hinder) blir plassert random i feltet etter
     let y = Math.floor(Math.random() * 480);
     bombe.style.left = x + 'px';
     bombe.style.top = y + 'px';
+}
+
+function restartGame() {
+    document.addEventListener('keydown', movePlayer);
+    document.getElementById('youWin').innerHTML = '';
+    document.getElementById('restartGame').style.display = 'none';
+    score = 0;
+    scoreDisplay.textContent = 'Score: ' + score;
+    moveBombe();
+    movePoint();
 }
 
 document.addEventListener('keydown', movePlayer); // funskjonen som tillater flytting av "player" med piltaster
