@@ -20,7 +20,7 @@ body {
 #player {
     width: 50px;
     height: 100px;
-    background-color: rgb(0, 0, 0);
+    background-color: blue;
     position: absolute;
     top: 225px;
     left: 225px;
@@ -76,6 +76,12 @@ body {
 
 #scorePoeng {
     width: 100%;
+}
+
+#katt {
+    width: 32%;
+    position: absolute;
+    border-radius: 15px;
 }
 
 #bombe {

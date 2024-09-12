@@ -1,6 +1,7 @@
 let player = document.getElementById('player'); // variabel for player
 let point = document.getElementById('point'); // variabel for point eller obsticle
 let bombe = document.getElementById('bombe');
+let katt = document.getElementById('katt');
 let scoreDisplay = document.getElementById('score'); // variabel for score (points samles her)
 let youWon = document.getElementById('winn'); // variabel for vinn-beskjed
 let resetGame = document.getElementById('resetGame')
@@ -30,19 +31,20 @@ function movePlayer(event) {    // funskjon for "player", lager funskjon som kan
     
     checkCollision();            // sjekker collision for "player"
     checkBombe();
+    checkKatt();
 }
 
 function checkCollision() {                           // collision detector
     let playerRect = player.getBoundingClientRect();
     let pointRect = point.getBoundingClientRect();
-
+    let kattRect = point.getBoundingClientRect();
     if (playerRect.left < pointRect.right &&
         playerRect.right > pointRect.left &&
         playerRect.top < pointRect.bottom &&
         playerRect.bottom > pointRect.top) {
         score++;
         scoreDisplay.textContent = 'Score: ' + score + '/2';
-        movePoint();           // sjekker move point (obsticle)
+        movePoint();           // sjekker move point (obsticle) 
     }
 
     if (score == 2) {
@@ -51,6 +53,24 @@ function checkCollision() {                           // collision detector
         document.removeEventListener('keydown', movePlayer);
     }
 }
+
+function checkCollisionMinus() {                        // collision detector
+    let kattRect = point.getBoundingClientRect();
+    if (playerRect.left < pointRect.right &&
+        playerRect.right > pointRect.left &&
+        playerRect.top < pointRect.bottom &&
+        playerRect.bottom > pointRect.top) {
+        score++;
+        scoreDisplay.textContent = 'Score: ' - score - '/2';
+        movePoint();           
+        }
+    }
+
+    if (score == 2) {
+        document.getElementById('youWin').innerHTML = 'You win!';
+        document.getElementById('restartGame').style.display = 'block';
+        document.removeEventListener('keydown', movePlayer);
+    }
 
 if (score !== 2) {
     document.getElementById('restartGame').style.display = 'none';
@@ -73,6 +93,21 @@ function checkBombe() {                           // collision detector
     }
 }
   
+
+function checkKatt() {
+    let playerRect = player.getBoundingClientRect();
+    let kattRect = katt.getBoundingClientRect();
+
+    if (playerRect.left < kattRect.right &&
+        playerRect.right > kattRect.left &&
+        playerRect.top < kattRect.bottom &&
+        playerRect.bottom > kattRect.top) {
+        score = 0;
+        scoreDisplay.textContent = 'Score: ' + score + '/2';
+        moveKatt();
+        }
+}
+
 function movePoint() {     // point (obsticle) blir plassert random i feltet etter kollisjon
     let x = Math.floor(Math.random() * 480);
     let y = Math.floor(Math.random() * 480);
@@ -87,6 +122,13 @@ function moveBombe() {     // bombe (hinder) blir plassert random i feltet etter
     bombe.style.top = y + 'px';
 }
 
+function moveKatt() {
+    let x = Math.floor(Math.random() * 480);
+    let y = Math.floor(Math.random() * 480);
+    katt.style.left = x + 'px';
+    katt.style.top = y + 'px';
+}
+
 function restartGame() {
     document.addEventListener('keydown', movePlayer);
     document.getElementById('youWin').innerHTML = '';
@@ -95,8 +137,10 @@ function restartGame() {
     scoreDisplay.textContent = 'Score: ' + score + '/2';
     moveBombe();
     movePoint();
+    moveKatt();
 }
 
 document.addEventListener('keydown', movePlayer); // funskjonen som tillater flytting av "player" med piltaster
 movePoint();
 moveBombe();
+moveKatt();
